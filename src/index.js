@@ -20,19 +20,10 @@ if (!existsSync(uploadDir)) mkdirSync(uploadDir, {recursive: true})
 const app = express()
 const port = Number(process.env.PORT || 3001)
 
-const allowList = (process.env.CORS_ORIGINS || '')
-  .split(',')
-  .map(item => item.trim())
-  .filter(Boolean)
-
+// 前端可能部署在多个域名（本地、Render、花生壳 gicp.fun 等），且接口使用 Bearer Token 鉴权，
+// 因此这里直接回显请求来源，便于任意前端的跨域调用。
 app.use(cors({
-  origin(origin, callback) {
-    if (!origin) return callback(null, true)
-    if (allowList.includes(origin) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
-      return callback(null, true)
-    }
-    callback(new Error('Not allowed by CORS'))
-  },
+  origin: true,
   credentials: true
 }))
 

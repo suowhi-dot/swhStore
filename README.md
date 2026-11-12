@@ -29,8 +29,8 @@ DB_SSL=false
 # DB_SSL_CA=C:\path\to\ca.pem   (可选)
 JWT_SECRET=...
 JWT_EXPIRES_IN=7d
-CORS_ORIGINS=http://localhost:5173,http://localhost:5174,http://localhost:5199
 UPLOAD_DIR=uploads
+# CORS：服务端默认回显任意来源（接口使用 Bearer Token 鉴权）
 ```
 
 TiDB Cloud 示例：`DB_HOST=gateway01.ap-northeast-1.prod.aws.tidbcloud.com`、`DB_PORT=4000`、

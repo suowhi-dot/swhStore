@@ -23,11 +23,18 @@ DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=123456
 DB_NAME=shenghua
+DB_SSL=false
+# TiDB Cloud / 远程 MySQL 需开启 SSL：
+# DB_SSL=true
+# DB_SSL_CA=C:\path\to\ca.pem   (可选)
 JWT_SECRET=...
 JWT_EXPIRES_IN=7d
 CORS_ORIGINS=http://localhost:5173,http://localhost:5174,http://localhost:5199
 UPLOAD_DIR=uploads
 ```
+
+TiDB Cloud 示例：`DB_HOST=gateway01.ap-northeast-1.prod.aws.tidbcloud.com`、`DB_PORT=4000`、
+`DB_SSL=true`，账号密码按集群创建时生成；表结构会在首次启动时自动创建/迁移。
 
 ## 数据表
 
